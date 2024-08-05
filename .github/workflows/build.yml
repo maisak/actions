@@ -2,7 +2,7 @@ name: Build and package
 
 env:
   DOTNET_VERSION: '8.0.x'
-  PROJECT_NAME: src/GithubActionsDemo/GithubActionsDemo.csproj
+  PROJECT_NAME: src/GithubActionsDemo/GithubActionsDemo/GithubActionsDemo.csproj
 
 on:
   workflow_dispatch:
