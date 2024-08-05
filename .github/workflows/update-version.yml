@@ -1,0 +1,25 @@
+name: Update Version
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    - name: Get current date and minutes since midnight
+      run: |
+        echo "CURRENT_DATE=$(date +'%Y.%m.%d')" >> $GITHUB_ENV
+        echo "MINUTES_SINCE_MIDNIGHT=$(($(date +'%H * 60 + %M')))" >> $GITHUB_ENV
+    - name: Update Version in appsettings.json
+      run: |
+        jq '.Version = env.CURRENT_DATE + "." + env.MINUTES_SINCE_MIDNIGHT' appsettings.json > temp.json && mv temp.json appsettings.json
+    - name: Commit and push changes
+      run: |
+        git config --global user.email "actions@github.com"
+        git config --global user.name "GitHub Actions"
+        git add appsettings.json
+        git commit -m "Update Version in appsettings.json"
+        git push
