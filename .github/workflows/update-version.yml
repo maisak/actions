@@ -11,7 +11,7 @@ jobs:
       uses: actions/checkout@v4
     - name: Get current date and minutes since midnight
       run: |
-        echo "CURRENT_DATE=$(date +'%Y.%m.%d')" >> $GITHUB_ENV
+        echo "CURRENT_DATE=$(date +'%Y.%-m.%-d')" >> $GITHUB_ENV
         echo "MINUTES_SINCE_MIDNIGHT=$(($(date +'%H * 60 + %M')))" >> $GITHUB_ENV
     - name: Update Version in appsettings.json
       run: |
