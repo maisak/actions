@@ -4,7 +4,7 @@ env:
   DOTNET_VERSION: '8.0.x'
   PROJECT_NAME: src/GithubActionsDemo/GithubActionsDemo/GithubActionsDemo.csproj
   SETTTINGS_FILE: src/GithubActionsDemo/GithubActionsDemo/appsettings.json
-  VERSION: $(date +'%Y.%-m.%-d')
+  APP_VERSION: $(date +'%Y.%-m.%-d')
 
 on:
   workflow_dispatch:
@@ -32,7 +32,7 @@ jobs:
         run: dotnet publish ${{ env.PROJECT_NAME }} --configuration Release --no-restore --output ./publish
 
       - name: Set version
-        run: echo ${{ env.VERSION }}
+        run: echo ${{ env.APP_VERSION }}
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
