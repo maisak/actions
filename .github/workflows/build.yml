@@ -3,7 +3,7 @@ name: Build and package
 env:
   DOTNET_VERSION: '8.0.x'
   PROJECT_NAME: src/GithubActionsDemo/GithubActionsDemo/GithubActionsDemo.csproj
-  SETTTINGS_FILE: src/GithubActionsDemo/GithubActionsDemo/appsettings.json
+  SETTTINGS_FILE: publish/appsettings.json
   APP_VERSION: $(date +'%Y.%-m.%-d')
 
 on:
@@ -33,6 +33,12 @@ jobs:
 
       - name: Set version
         run: echo ${{ env.APP_VERSION }}
+
+      - name: Update package.json version
+        uses: restackio/update-json-file-action@2.1
+        with:
+          file: ${{ env.SETTTINGS_FILE }}
+          fields: "{\"Version\": \"" + ${{ env.APP_VERSION }} + "\"}"
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
