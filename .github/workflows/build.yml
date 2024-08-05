@@ -31,14 +31,12 @@ jobs:
       - name: Publish the project
         run: dotnet publish ${{ env.PROJECT_NAME }} --configuration Release --no-restore --output ./publish
 
-      - name: Set version
+      - name: Echo version
         run: echo ${{ env.APP_VERSION }}
 
-      - name: Update package.json version
-        uses: restackio/update-json-file-action@2.1
-        with:
-          file: ${{ env.SETTTINGS_FILE }}
-          fields: "{\"Version\": \"" + ${{ env.APP_VERSION }} + "\"}"
+      - name: Update version in settings file
+        run: |
+          jq --arg version "${{ env.APP_VERSION }}" '.Version = $version' ${{ env.SETTTINGS_FILE }} > temp.json && mv temp.json ${{ env.SETTTINGS_FILE }}
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
