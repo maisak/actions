@@ -4,7 +4,8 @@ env:
   DOTNET_VERSION: '8.0.x'
   PROJECT_NAME: src/GithubActionsDemo/GithubActionsDemo/GithubActionsDemo.csproj
   SETTTINGS_FILE: publish/appsettings.json
-  APP_VERSION: $(date +'%Y.%-m.%-d')
+  CURRENT_DATE: $(date +'%Y.%-m.%-d')
+  MINUTES_SINCE_MIDNIGHT: $(($(date +'%-H * 60 + %-M')))
 
 on:
   workflow_dispatch:
@@ -31,12 +32,11 @@ jobs:
       - name: Publish the project
         run: dotnet publish ${{ env.PROJECT_NAME }} --configuration Release --no-restore --output ./publish
 
-      - name: Echo version
-        run: echo ${{ env.APP_VERSION }}
-
       - name: Update version in settings file
         run: |
-          jq --arg version "${{ env.APP_VERSION }}" '.Version = $version' ${{ env.SETTTINGS_FILE }} > temp.json && mv temp.json ${{ env.SETTTINGS_FILE }}
+          APP_VERSION="${{ env.CURRENT_DATE }}.${{ env.MINUTES_SINCE_MIDNIGHT }}"
+          echo ${{ env.APP_VERSION }}
+          jq --arg version "$APP_VERSION" '.Version = $version' ${{ env.SETTTINGS_FILE }} > temp.json && mv temp.json ${{ env.SETTTINGS_FILE }}
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
