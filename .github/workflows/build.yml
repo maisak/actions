@@ -3,7 +3,7 @@ name: Build and package
 env:
   DOTNET_VERSION: '8.0.x'
   PROJECT_NAME: src/GithubActionsDemo/GithubActionsDemo/GithubActionsDemo.csproj
-  SETTTINGS_FILE: publish/appsettings.json
+  SETTINGS_FILE: publish/appsettings.json
   CURRENT_DATE: $(date +'%Y.%-m.%-d')
   MINUTES_SINCE_MIDNIGHT: $(($(date +'%-H * 60 + %-M')))
 
@@ -36,7 +36,7 @@ jobs:
         run: |
           APP_VERSION="${{ env.CURRENT_DATE }}.${{ env.MINUTES_SINCE_MIDNIGHT }}"
           echo ${{ env.APP_VERSION }}
-          jq --arg version "$APP_VERSION" '.Version = $version' ${{ env.SETTTINGS_FILE }} > temp.json && mv temp.json ${{ env.SETTTINGS_FILE }}
+          jq --arg version "$APP_VERSION" '.Version = $version' ${{ env.SETTINGS_FILE }} > temp.json && mv temp.json ${{ env.SETTINGS_FILE }}
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4

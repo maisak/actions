@@ -1,0 +1,18 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Get latest run id
+        id: get-latest-run-id
+        run: |
+          latest_run_id=$(curl -s -H "Authorization: token ${{ secrets.PAT }}" \
+          "https://api.github.com/repos/${{ github.repository }}/actions/workflows/build.yml/runs" \
+          | jq -r '.workflow_runs[0].id')
+          echo "::set-output name=run-id::$latest_run_id"
+        shell: bash
