@@ -1,0 +1,36 @@
+name: Build and package
+
+env:
+  DOTNET_VERSION: '8.0.x'
+  PROJECT_NAME: GithubActionsDemo/GithubActionsDemo.csproj
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build the project
+        run: dotnet build ${{ env.PROJECT_NAME }} --configuration Release --no-restore
+
+      - name: Publish the project
+        run: dotnet publish ${{ env.PROJECT_NAME }} --configuration Release --no-restore --output ./publish
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: demo-app
+          path: ./publish
