@@ -26,5 +26,5 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: demo-app
-          github_token: ${{ secrets.PAT }}
+          github-token: ${{ secrets.PAT }}
           run-id: ${{ env.LATEST_RUN_ID }}        
