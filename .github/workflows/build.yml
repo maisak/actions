@@ -35,7 +35,7 @@ jobs:
       - name: Update version in settings file
         run: |
           APP_VERSION="${{ env.CURRENT_DATE }}.${{ env.MINUTES_SINCE_MIDNIGHT }}"
-          echo ${{ env.APP_VERSION }}
+          echo $APP_VERSION
           jq --arg version "$APP_VERSION" '.Version = $version' ${{ env.SETTINGS_FILE }} > temp.json && mv temp.json ${{ env.SETTINGS_FILE }}
 
       - name: Upload build artifacts
