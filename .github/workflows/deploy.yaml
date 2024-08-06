@@ -1,7 +1,15 @@
 name: Deploy
 
+env:
+  DOTNET_VERSION: '8.0.x'
+
 on:
   workflow_dispatch:
+    inputs:
+      siteToDeploy:
+        description: 'Demo site to deploy'
+        required: true
+        default: 'test-web-app-maisak'
 
 jobs:
   deploy:
@@ -27,4 +35,17 @@ jobs:
         with:
           name: demo-app
           github-token: ${{ secrets.PAT }}
-          run-id: ${{ env.LATEST_RUN_ID }}        
+          run-id: ${{ env.LATEST_RUN_ID }}
+          
+      - name: Echo
+        run: |
+          echo "hi"
+          echo ${{ inputs.siteToDeploy }}
+
+      - name: Deploy to Azure Web App
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ inputs.siteToDeploy }}
+          publish-profile: ${{ secrets.AZURE_DEMO_PUBLISH_PROFILE }}
+          package: '.'
