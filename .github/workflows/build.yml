@@ -2,7 +2,7 @@ name: Build and package
 
 env:
   DOTNET_VERSION: '8.0.x'
-  PROJECT_NAME: src/GithubActionsDemo/GithubActionsDemo/GithubActionsDemo.csproj
+  PROJECT_NAME: src/GithubActionsDemo/GithubActionsDemo.csproj
   SETTINGS_FILE: publish/appsettings.json
   CURRENT_DATE: $(date +'%Y.%-m.%-d')
   MINUTES_SINCE_MIDNIGHT: $(($(date +'%-H * 60 + %-M')))
