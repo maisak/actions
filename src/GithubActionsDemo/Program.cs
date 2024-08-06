@@ -1,7 +1,10 @@
+using GithubActionsDemo.Options;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.Configure<AppSettings>(builder.Configuration);
 
 var app = builder.Build();
 

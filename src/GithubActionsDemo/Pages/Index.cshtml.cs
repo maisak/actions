@@ -1,18 +1,15 @@
-using Microsoft.AspNetCore.Mvc;
+using GithubActionsDemo.Options;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Options;
 
 namespace GithubActionsDemo.Pages;
 
-public class IndexModel : PageModel
+public class IndexModel(IOptions<AppSettings> settings) : PageModel
 {
-	private readonly ILogger<IndexModel> _logger;
-
-	public IndexModel(ILogger<IndexModel> logger)
-	{
-		_logger = logger;
-	}
-
+	public string Version { get; private set; } = "0.0.0.0";
+	
 	public void OnGet()
 	{
+		Version = settings.Value.Version;
 	}
 }
