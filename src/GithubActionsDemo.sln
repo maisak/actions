@@ -2,6 +2,21 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GithubActionsDemo", "GithubActionsDemo\GithubActionsDemo.csproj", "{45632221-78FE-4E76-95A6-81C4A8CBBA68}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwesomePrivatePackage", "AwesomePrivatePackage\AwesomePrivatePackage.csproj", "{13745482-AF74-422A-8E74-89DB1CD7CCC2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{FAD66895-ED0E-4929-96DD-C69433BAE11A}"
+	ProjectSection(SolutionItems) = preProject
+		..\readme.md = ..\readme.md
+		..\.gitignore = ..\.gitignore
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "actions", "actions", "{3E235151-9A1E-4A64-A9CA-35BB2B5FD058}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\build.yml = ..\.github\workflows\build.yml
+		..\.github\workflows\deploy.yml = ..\.github\workflows\deploy.yml
+		..\.github\workflows\package.yml = ..\.github\workflows\package.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +27,12 @@ Global
 		{45632221-78FE-4E76-95A6-81C4A8CBBA68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45632221-78FE-4E76-95A6-81C4A8CBBA68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45632221-78FE-4E76-95A6-81C4A8CBBA68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13745482-AF74-422A-8E74-89DB1CD7CCC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13745482-AF74-422A-8E74-89DB1CD7CCC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13745482-AF74-422A-8E74-89DB1CD7CCC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13745482-AF74-422A-8E74-89DB1CD7CCC2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3E235151-9A1E-4A64-A9CA-35BB2B5FD058} = {FAD66895-ED0E-4929-96DD-C69433BAE11A}
 	EndGlobalSection
 EndGlobal
