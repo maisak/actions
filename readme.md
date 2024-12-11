@@ -1,5 +1,6 @@
 [![Build and package](https://github.com/maisak/actions/actions/workflows/build.yml/badge.svg)](https://github.com/maisak/actions/actions/workflows/build.yml)
 [![Deploy](https://github.com/maisak/actions/actions/workflows/deploy.yml/badge.svg)](https://github.com/maisak/actions/actions/workflows/deploy.yml)
+[![Package](https://github.com/maisak/actions/actions/workflows/package.yml/badge.svg)](https://github.com/maisak/actions/actions/workflows/package.yml)
 # Intro
 
 This repository contains a simple web application that can be deployed to Azure App Service using Github Actions.
