@@ -1,4 +1,4 @@
-name: Build and package
+name: Package
 
 env:
   DOTNET_VERSION: '9.0.x'

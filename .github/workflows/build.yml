@@ -1,4 +1,4 @@
-name: Build and package
+name: Build and publish
 
 env:
   DOTNET_VERSION: '8.0.x'
