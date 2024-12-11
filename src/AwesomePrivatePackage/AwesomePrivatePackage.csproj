@@ -5,11 +5,11 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <PackageId>AwesomePrivatePackage</PackageId>
-        <Version>1.0.6</Version>
+        <Version>1.0.7</Version>
         <Authors>Anthony Maisak</Authors>
         <Description>A sample class library</Description>
         <PackageTags>sample</PackageTags>
-        <RepositoryUrl>https://github.com/maisak/</RepositoryUrl>
+        <RepositoryUrl>https://github.com/maisak/actions</RepositoryUrl>
     </PropertyGroup>
 
 </Project>

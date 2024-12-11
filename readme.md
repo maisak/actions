@@ -43,3 +43,33 @@ cd scripts
 cd scripts
 ./delete-azure-resources.ps1
 ```
+# Shared library
+
+Another project is a 'SharedPackage' that is packed into a nuget package and published to Github Packages.
+
+### To manually build the package:
+
+Make sure package project has all the settings needed in `.csproj` file.
+
+```xml  
+<PackageId>AwesomePrivatePackage</PackageId>  
+<Version>1.0.6</Version>  
+<Authors>Anthony Maisak</Authors>  
+<Description>A sample class library</Description>  
+<PackageTags>sample</PackageTags>  
+<RepositoryUrl>https://github.com/maisak/actions</RepositoryUrl>  
+```  
+Pack it
+
+```powershell  
+cd SharedPackage  
+dotnet build  
+dotnet pack -c Release  
+```  
+
+Publish it
+
+```powershell  
+dotnet nuget add source --username maisak --password <PAT> --store-password-in-clear-text --name github-maisak "https://nuget.pkg.github.com/maisak/index.json"  
+dotnet nuget push .\bin\Release\AwesomePrivatePackage.1.0.6.nupkg -s github-maisak
+```
