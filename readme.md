@@ -20,6 +20,7 @@ To facilitate the deployment process, two scripts are provided:
 ### Create Azure resources
 
 ```powershell
+az login
 cd scripts
 ./create-azure-resources.ps1
 ```

@@ -17,6 +17,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "actions", "actions", "{3E23
 		..\.github\workflows\package.yml = ..\.github\workflows\package.yml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{7F9E648F-5586-4010-88DC-3CC8A87B3AAA}"
+	ProjectSection(SolutionItems) = preProject
+		..\scripts\create-azure-resources.ps1 = ..\scripts\create-azure-resources.ps1
+		..\scripts\delete-azure-resources.ps1 = ..\scripts\delete-azure-resources.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,5 +40,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3E235151-9A1E-4A64-A9CA-35BB2B5FD058} = {FAD66895-ED0E-4929-96DD-C69433BAE11A}
+		{7F9E648F-5586-4010-88DC-3CC8A87B3AAA} = {FAD66895-ED0E-4929-96DD-C69433BAE11A}
 	EndGlobalSection
 EndGlobal

@@ -9,4 +9,4 @@ az group create -n $rgname -l $location --tags $tags
 # Create app service plan
 az appservice plan create -n $appServicePlanName -g $rgName --sku F1 --tags $tags --is-linux
 # create web app
-az webapp create -n $appName -g $rgName --plan $appServicePlanName --runtime "DOTNETCORE:8.0" --tags $tags
+az webapp create -n $appName -g $rgName --plan $appServicePlanName --runtime "DOTNETCORE:9.0" --tags $tags
